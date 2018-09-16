@@ -1,0 +1,5 @@
+﻿django==2.0.8
+django-debug-toolbar
+django-extensions
+ipython[notebook]
+django-bootstrap3

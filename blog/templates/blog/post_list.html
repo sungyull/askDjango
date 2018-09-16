@@ -1,0 +1,59 @@
+{% extends "blog/layout.html"%}
+
+{% block title%}
+    Post List!!!
+{% endblock%}
+
+{% block content%}
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Django Template <sup>by SungYull</sup></h1>
+            <p>파이썬, 장고... 간단 쇼핑몰 만들기... BASE_DIR= {{ BASE_DIR }}  </p>
+            <p>
+                <a class="btn btn-lg btn-primary" href="http://facebook.com/groups/askdjango">
+                AskDjango 페이스북 그룹 &raquo;
+                </a>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-am-12">
+                <a href="{% url 'blog:post_new' %}" class="btn btn-primary pull-right">새글쓰기</a>
+                <p align="left">
+                    <form action="" method="get">
+                        <input type="text" name="q" value="{{query}}" />
+                        <input type="submit" value="검색" class="btn btn-primary">
+                    </form>
+                </p>
+
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr align="center">
+                            <td>번호</td>
+                            <td>제목</td>
+                            <td>작성자</td>
+                            <td>최종입력시간</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in post_list %}
+                        <tr>
+                            <td>{{post.id}}</td>
+                            <td><a href="{% url "blog:post_detail" post.id %}">
+                                {{post.title|truncatechars:20}}
+                                </a>
+                            </td>
+                            <td><small> by {{post.author}}</small></td>
+                            <td><small> at - {{post.updated_at}}</small></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
