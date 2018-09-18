@@ -14,9 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
 from django.shortcuts import redirect
+
 
 def root(request):
     return redirect('blog:post_list')
@@ -30,6 +32,8 @@ urlpatterns = [
     url(r'^shop/', include('shop.urls', namespace='shop' )),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
