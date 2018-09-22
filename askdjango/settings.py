@@ -146,6 +146,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
 INTERNAL_IPS = ["127.0.0.1"]
+
+NAVER_CLIENT_ID = 'mFFUTBgCPlBY0nxv_g6W'    #네이버맵 개별 ClientID
+
+
+
 
