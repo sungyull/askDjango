@@ -39,6 +39,7 @@
 
                 <hr/>
                 <a href="{% url "blog:post_list" %}" class="btn btn-default">글목록</a>
+                <a href="{% url "blog:post_delete" post.id%}" class="btn btn-default pull-right">글삭제</a>
                 <a href="{% url "blog:post_edit" post.id%}" class="btn btn-default pull-right">글수정</a>
                 <!--<a href="/blog/">글목록</a>-->
                 <hr/>

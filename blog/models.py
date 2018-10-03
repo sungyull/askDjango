@@ -7,9 +7,11 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 # from django.shortcuts import reverse
 
+
 def lnglat_validator(value):
     if not re.match(r'^([+-]?\d+\.?\d*),([+-]?\d+\.?\d*)$', value):
         raise ValidationError('Invalid LngLat Type')
+
 
 class Post(models.Model):
 
@@ -42,12 +44,14 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.id])
 
+
 class Comment(models.Model):
     post = models.ForeignKey(Post)
     author = models.CharField(max_length=50, verbose_name='작성자')
     message = models.TextField(verbose_name='내용')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
